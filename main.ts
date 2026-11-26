@@ -23,7 +23,9 @@ if (!/charger|cable/i.test(LINE)) {
   throw new Error("line must mention the charger or the cable");
 }
 
-const outDir = "/output";
+const outDir =
+  process.env.MAKEFUN_OUTPUT_DIR ||
+  join(dirname(fileURLToPath(import.meta.url)), "output");
 const outPath = join(outDir, "entry.txt");
 
 mkdirSync(outDir, { recursive: true });
