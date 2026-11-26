@@ -19,6 +19,9 @@ if (LINE.includes("\n") || LINE.includes("\r")) {
 if (LINE !== LINE.trim() || LINE.includes("  ")) {
   throw new Error("line must not have leading/trailing whitespace or double spaces");
 }
+if (!/charger|cable/i.test(LINE)) {
+  throw new Error("line must mention the charger or the cable");
+}
 
 const outDir = "/output";
 const outPath = join(outDir, "entry.txt");
